@@ -27,7 +27,6 @@ public class UserService {
 
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
@@ -47,7 +46,6 @@ public class UserService {
 	}
 	
 	public User update(Long id, User obj) {
-		
 		try {
 			User entity = repository.getReferenceById(id);
 			updateData(entity, obj);
@@ -56,8 +54,6 @@ public class UserService {
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
-		
-		
 	}
 
 	private void updateData(User entity, User obj) {
